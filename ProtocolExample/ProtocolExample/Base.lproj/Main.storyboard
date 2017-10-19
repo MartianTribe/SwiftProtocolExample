@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GeezaPro.ttc">
+            <string>GeezaPro</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ProtocolExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Protocol Example" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSd-Q3-ovE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.89983713629999995" green="0.50853770970000001" blue="0.30199846629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jsa-aW-Q0b">
+                                <rect key="frame" x="6" y="48" width="363" height="546"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="546" id="z9S-iN-Rq3"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAy-re-RvB">
+                                <rect key="frame" x="0.0" y="631" width="375" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="9hO-Py-0lF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="17"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showSolution:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EUp-d8-MC1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jsa-aW-Q0b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="6" id="7SU-lm-KXs"/>
+                            <constraint firstItem="eAy-re-RvB" firstAttribute="trailing" secondItem="kSd-Q3-ovE" secondAttribute="trailing" id="BjD-4G-Rnq"/>
+                            <constraint firstItem="eAy-re-RvB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="FMR-yW-L0B"/>
+                            <constraint firstItem="eAy-re-RvB" firstAttribute="top" secondItem="jsa-aW-Q0b" secondAttribute="bottom" constant="37" id="KYD-ne-tUV"/>
+                            <constraint firstItem="jsa-aW-Q0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Lhh-4C-H23"/>
+                            <constraint firstItem="eAy-re-RvB" firstAttribute="leading" secondItem="kSd-Q3-ovE" secondAttribute="leading" id="VTh-Ga-T7f"/>
+                            <constraint firstItem="jsa-aW-Q0b" firstAttribute="top" secondItem="kSd-Q3-ovE" secondAttribute="bottom" constant="8" symbolic="YES" id="X7c-HV-rsE"/>
+                            <constraint firstItem="jsa-aW-Q0b" firstAttribute="centerX" secondItem="kSd-Q3-ovE" secondAttribute="centerX" id="fZI-GM-1oF"/>
+                            <constraint firstItem="jsa-aW-Q0b" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="48" id="ka5-Um-co4"/>
+                            <constraint firstItem="eAy-re-RvB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s9e-YC-Imz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnSolution" destination="eAy-re-RvB" id="55o-0c-q0R"/>
+                        <outlet property="txtExplanation" destination="jsa-aW-Q0b" id="E2j-f8-VgN"/>
+                        <segue destination="kYc-Vd-IC7" kind="show" identifier="toSolution" id="6ve-sY-5ff"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
+        </scene>
+        <!--Solution-->
+        <scene sceneID="8nj-iP-anK">
+            <objects>
+                <viewController id="kYc-Vd-IC7" customClass="Solution" customModule="ProtocolExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jFf-jJ-gpy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1a3-iZ-5Xz">
+                                <rect key="frame" x="97" y="43" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="gshepherd"/>
+                                <connections>
+                                    <action selector="showGS:" destination="kYc-Vd-IC7" eventType="touchUpInside" id="bHC-dz-ATT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ong-fy-235">
+                                <rect key="frame" x="213" y="43" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="lab"/>
+                                <connections>
+                                    <action selector="showLab:" destination="kYc-Vd-IC7" eventType="touchUpInside" id="z2J-sA-mRv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebv-yG-ige">
+                                <rect key="frame" x="213" y="127" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="basenji"/>
+                                <connections>
+                                    <action selector="showBasenji:" destination="kYc-Vd-IC7" eventType="touchUpInside" id="AzS-lW-crj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR8-RM-yNJ">
+                                <rect key="frame" x="97" y="226" width="186" height="291"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbc-cP-VaZ">
+                                <rect key="frame" x="97" y="127" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="pug"/>
+                                <connections>
+                                    <action selector="showPug:" destination="kYc-Vd-IC7" eventType="touchUpInside" id="KzU-8o-Zil"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="gsl-ZI-Ukv"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnBasenji" destination="Ebv-yG-ige" id="7oT-jL-55k"/>
+                        <outlet property="btnGS" destination="1a3-iZ-5Xz" id="Tyv-fe-scm"/>
+                        <outlet property="btnLab" destination="ong-fy-235" id="Zql-6B-Ply"/>
+                        <outlet property="btnPug" destination="dbc-cP-VaZ" id="xO1-RK-ONI"/>
+                        <outlet property="lblDogInfo" destination="IR8-RM-yNJ" id="kgO-Rj-AWc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dDH-OO-2i1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1053.5999999999999" y="117.39130434782609"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="basenji" width="322" height="190"/>
+        <image name="gshepherd" width="165" height="150"/>
+        <image name="lab" width="110" height="81"/>
+        <image name="pug" width="340" height="272"/>
+    </resources>
+</document>

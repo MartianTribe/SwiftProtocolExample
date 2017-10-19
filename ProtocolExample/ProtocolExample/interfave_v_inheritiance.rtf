@@ -1,0 +1,262 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green31\blue103;\red0\green61\blue204;\red0\green45\blue153;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c12157\c40392;\csgenericrgb\c0\c23922\c80000;\csgenericrgb\c0\c17647\c60000;
+}
+\margl1440\margr1440\vieww16900\viewh15620\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs36 \cf2 Protocol vs. Inheritance\
+
+\b0\fs24 \cf0 \
+
+\f1\fs28 Also called Interface vs. Inheritance or Composition over Inheritance is a solution to the problem where class inheritance creates bloated or complex chunks of code. \
+\
+What is inheritance: \
+\
+Inheritance is where one class is instantiated as a subclass of another class (the superclass). The subclass inherits all the properties and methods of the superclass\'85and if the superclass is a subclass of another class, the properties and methods of the superclass\'92 parent class and so on. For example: 
+\f0\fs24 \
+\
+\cf3 UIView \'97> myView:UIView \'97> yourView:myView\cf0 \
+\
+
+\f1\fs28 Here we are subclassing UIView and calling the subclass myView. And we are making another subclass from myView and calling it yourView. yourView will inherit all the properties and methods of myView as well as UIView.
+\f0\fs24 \
+\
+
+\b\fs36 \cf2 The Problem
+\b0\fs24 \cf0 \
+\
+
+\f1\fs28 In some cases this can create bloated code or added complexity to your code. For example: We create a class called Dog in Swift, with one property and function.
+\f0\fs24 \
+\
+\cf3 Class Dog \{ \
+	\
+	var name:String\
+	var age:Int\
+\
+	init(name:String, age:Int) \{ \
+		self.name = name\
+		self.age = age\
+	\}\
+	\
+	func speak() \{ \
+		print(\'93Bark!\'94)\
+	\}\
+\}\
+\cf0 \
+\
+
+\f1\fs28 And we subclass a type of Dog:
+\f0\fs24 \
+\
+\cf3 Class GermanShepherd:Dog \{ \
+\
+\}\cf0 \
+\
+
+\f1\fs28 And create an object from it:
+\f0\fs24 \
+\
+\cf3 let myDog = GermanShepherd(name:Fido, age:3)\
+myDog.speak() //<\'97prints Bark!\cf0 \
+\
+
+\f1\fs28 Pretty straightforward. And say our dog works as a drug sniffing dog. We can add that to it\'92s class:\
+
+\f0\fs24 \cf3 \
+Class GermanShepherd:Dog \{ 	\
+\
+	func sniffDrugs \{ \
+		if 1 == 1 \{ \
+			speak()\
+		\}\
+	\}\
+\}\cf0 \
+\
+
+\f1\fs28 And now, my dog can do his job: 
+\f0\fs24 \
+\
+\cf3 myDog.sniffDrugs() //<\'97 prints Bark!\cf0 \
+\
+
+\f1\fs28 Say my friend has a dog, but it\'92s a Lab. No problem, let\'92s make a class for him. It is also a drug sniffing dog, so we add the function. \
+
+\f0\fs24 \
+\cf3 Class LabradorRetriever:Dog \{ \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf3 	func sniffDrugs \{ \
+		if 1 == 1 \{ \
+			speak()\
+		\}\
+	\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf3 \}\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf3 let yourDog = LabradoeRetriever(name:Spot, age:5)\
+yourDog.speak() //<\'97prints Bark!\cf0 \
+\
+
+\f1\fs28 So you can see an issue here, we\'92ve duplicated code. One solution would be to subclass Lab as a GermanShepherd
+\f0\fs24 \
+\
+\cf3 Class LabradorRetriever:GermanShepherd \{ \
+\
+\}\
+\cf0 \
+
+\f1\fs28 or move the function sniffDrugs up to the Dog superclass so both inherit it. But what happens when we introduce my neighbors dog, a Pug, who does not sniff drugs, but does like the water?
+\f0\fs24 \
+\
+\cf3 Class Pug:Dog \{ \
+	\
+	func swims() \{ \
+		print(\'93Splash\'94)\
+	\}\
+\}\cf0 \
+\
+
+\f1\fs28 Pug is inheriting the sniffDrugs function even though it can\'92t use it. OK, so go back to subclassing Lab as a GermanShepherd. That might work, except my friends dog also likes to swim. We could write the swims function in LabradorRetriever class but there\'92s duplication again. 
+\f0\fs24 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b\fs36 \cf4 Protocols and Extensions Offer A Solution
+\b0\fs24 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs28 \cf0 Protocols are kind of like small requirement documents, providing properties, methods and other requirements needed for a particular task or piece of functionality. If your class adopts a protocol, it will need to conform to it, meaning it needs to include the properties and methods listed as requirements. We use protocols all the time, in UITableViews, UIPickerViews, etc. In our case of a Dog class, we can use them to define types of dogs and the requirements for each. \
+\
+In the protocol, you list out the functions and their function types and properties but don\'92t actually write the function code or property value. Remember, this is just a requirements doc. 
+\f0\fs24 \
+\
+\cf3 Protocol BarkingDog \{ \
+	func speak()\
+\}\cf0 \
+\
+
+\f1\fs28 However, with Swift 2+ we can add functionality to our protocol with Extensions:
+\f0\fs24 \
+\
+\cf3 Extension BarkingDog \{ \
+\
+	func speak() \{ \
+		print(\'93Bark!\'94)\
+	\}\
+\} \cf0 \
+\
+
+\f1\fs28 Since we can have multiple protocols on a class we can now create a very flexible, lightweight or robust depending on our needs Dog class:
+\f0\fs24 \
+\
+\cf4 MARK: - Dog Types \
+\
+Protocol BarkingDog \{ \
+	func speak()\
+\}\
+\
+Protocol DrugSniffingDog \{ \
+	func sniffDrugs()\
+\}\
+\
+Protocol SwimmingDog \{ \
+	func swim()\
+\}\
+\
+Protocol LazyDog \{ \
+	func sleep()\
+\}\
+\
+Protocol ActiveDog \{ \
+	func destroy()\
+\}\
+\
+MARK:- Dog Types Extensions\
+\
+Extension BarkingDog \{ \
+\
+	func speak() \{ \
+		print(\'93Bark!\'94)\
+	\}\
+\} \
+\
+Extension DrugSniffingDog \{ \
+\
+	func sniffDrugs() \{ \
+		if 1 == 1 \{ \
+			speak()\
+		\}\
+	\}\
+\} \
+\
+Extension SwimmingDog \{ \
+\
+	func swim() \{ \
+		print(\'93Splash!\'94)\
+	\}\
+\} \
+\
+Extension LazyDog \{ \
+\
+	func sleep() \{ \
+		print(\'93Zzzzzz!\'94)\
+	\}\
+\} \
+\
+Extension ActiveDog \{ \
+\
+	func destroy() \{ \
+		print(\'93Chew, nom, nom!\'94)\
+	\}\
+\} \
+\
+Class Dog \{ \
+	\
+	var name:String\
+	var age:Int\
+\
+	init(name:String, age:Int) \{ \
+		self.name = name\
+		self.age = age\
+	\}\
+\}\
+\
+Class GermanShepherd:Dog, BarkingDog, DrugSniffingDog \{ \
+	\
+\}\
+\
+Class LabradorRetriever:Dog, BarkingDog, DrugSniffingDog, SwimmingDog \{ \
+	\
+\}\
+\
+Class Pug:Dog, BarkingDog, SwimmingDog. LazyDog \{ \
+	\
+\}\
+\
+Class Basenji:Dog, ActiveDog \{ \
+	\
+\}\
+\
+Let myDog = GermanShepherd() \
+myDog.sniffDrugs() //<\'97prints Bark!\
+\
+Let neighborsDog = Pug()\
+neighborsDog.sleep() <\'97 prints Zzzzz!\cf0 \
+\
+\
+
+\f1\fs28 When you are architecting your module it\'92s important to pick the write design pattern, and in some circumstances, Protocol will be a better pattern than Inheritance. \
+\
+
+\f0\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+}
